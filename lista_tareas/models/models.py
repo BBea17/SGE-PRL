@@ -11,6 +11,13 @@ class lista_tareas(models.Model):
     urgente = fields.Boolean(compute="_value_urgente", store=True)
     realizada = fields.Boolean()
 
+    # Agregamos dos variables para la vista calendar, que definirán la fecha de inicio y de fin de las tareas
+    date_assign = fields.Date("Fecha de inicio")
+    date_end = fields.Date("Fecha de fin")
+
+    # Agregamos una variable Image para la imagen que se mostrará en el diseño Kanban
+    imagen = fields.Image("Imagen")
+
     @api.depends('prioridad')
 
     def _value_urgente(self):

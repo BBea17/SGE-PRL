@@ -18,10 +18,51 @@
     <!-- Acciones al abrir las vistas en los modelos
   https://www.odoo.com/documentation/14.0/developer/reference/addons/actions.html
   -->
+
+    <record id="tareas_calender_view" model="ir.ui.view">
+      <field name="model">lista_tareas.lista_tareas</field>
+      <field name="arch" type="xml">
+        <!-- Definimos las fechas (inicio y final)
+              asi como colo del proyecto para la vista calendario
+              PD: el unico dato obligatorio es "date_start"
+          -->
+        <calendar date_start="date_assign" date_stop="date_end">
+          <field name="tarea" />
+        </calendar>
+      </field>
+    </record>
+
+    <record id="tareas_kanban_view" model="ir.ui.view">
+      <field name="name">project.task.kanban</field>
+      <field name="model">lista_tareas.lista_tareas</field>
+      <field name="arch" type="xml">
+        <!-- Agrupamos por el atributo "stage id"-->
+        <kanban default_group_by="urgente">
+          <field name="tarea" />
+          <field name="prioridad" />
+          <field name="urgente" />
+          <field name="realizada" />
+          <field name="id" />
+          <!-- Plantilla QWeb para indicar como es la tarjeta Kanban-->
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_card oe_kanban_global_click">
+                <field name="tarea" />
+                <a type="open">
+                  <img class="o_image_64_contain"
+                    t-att-src="kanban_image('lista_tareas.lista_tareas', 'imagen', record.id.raw_value)" />
+                </a>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="lista_tareas.action_window">
       <field name="name">Listado de tareas pendientes</field>
       <field name="res_model">lista_tareas.lista_tareas</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar,kanban</field>
     </record>
     <!-- Top menu item -->
     <menuitem name="Listado de tareas" id="lista_tareas.menu_root" />
