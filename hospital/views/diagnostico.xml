@@ -1,10 +1,13 @@
 <odoo>
     <data>
         <record model="ir.ui.view" id="hospital.list_diagnostico">
+            <!-- Nombre representantivo (identicador)-->
             <field name="name">Vista diagnosticos</field>
+            <!-- Relación con el modelo -->
             <field name="model">hospital.diagnostico</field>
             <field name="arch" type="xml">
                 <tree>
+                    <!-- Atributos que se mostrarán en la vista-->
                     <field name="sintoma" />
                     <field name="descripcion" />
                     <field name="relPaciente" />
@@ -12,14 +15,14 @@
                 </tree>
             </field>
         </record>
-
+        <!-- Definición de la ventana, cómo se visualizará, en este caso con la vista tree -->
         <record model="ir.actions.act_window" id="hospital.action_window_diagnostico">
             <field name="name">Diagnosticos</field>
             <field name="res_model">hospital.diagnostico</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-
+        <!-- De qué menú colgará -->
         <menuitem name="Diagnosticos" id="hospital_diagnosticos_list" parent="hospital_menu_root"
             action="hospital.action_window_diagnostico" />
     </data>

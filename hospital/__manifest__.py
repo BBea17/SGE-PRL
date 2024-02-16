@@ -20,7 +20,7 @@ Long description of module's purpose
     # any module necessary for this one to work correctly
     'depends': ['base'],
 
-    # always loaded
+    # importar las vistas que queremos
     'data': [
         'security/ir.model.access.csv',
         'views/paciente.xml',

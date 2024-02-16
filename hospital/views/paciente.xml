@@ -1,26 +1,29 @@
 <odoo>
     <data>
         <record model="ir.ui.view" id="hospital.list_pacientes">
+            <!-- Nombre representantivo (identicador)-->
             <field name="name">Vista pacientes</field>
+            <!-- Relación con el modelo -->
             <field name="model">hospital.paciente</field>
             <field name="arch" type="xml">
+                <!-- Atributos del modelo que se mostrarán en la UI -->
                 <tree>
                     <field name="nombre" />
                     <field name="apellido" />
                     <field name="sintoma" />
-                    <field name="diagnosticoPaciente"/>
+                    <field name="diagnosticoPaciente" />
                 </tree>
             </field>
         </record>
-
+        <!-- Definición de la ventana, cómo se visualizará, en este caso con la vista tree -->
         <record model="ir.actions.act_window" id="hospital.action_window_pacientes">
             <field name="name">Pacientes</field>
             <field name="res_model">hospital.paciente</field>
             <field name="view_mode">tree,form</field>
         </record>
-
+        <!-- Definición del menú -->
         <menuitem name="Hospital" id="hospital_menu_root" />
-
+        <!-- De qué menú colgará -->
         <menuitem name="Pacientes" id="hospital_pacientes_list" parent="hospital_menu_root"
             action="hospital.action_window_pacientes" />
     </data>

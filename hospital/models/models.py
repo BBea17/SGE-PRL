@@ -2,6 +2,7 @@
 # se importan siempre #
 from odoo import models, fields, api
 
+#modelo medico, con sus atributos y la relación One2Many hacia el registro diagnostico
 class medico(models.Model):
     _name = 'hospital.medico'
     _description = 'hospital.medico'
@@ -11,7 +12,7 @@ class medico(models.Model):
     num_colegiado = fields.Integer("Número de colegiado:")
     diagnosticoMedico = fields.One2many('hospital.diagnostico','relMedico')
 
-
+#modelo paciente, con sus atributos y la relación One2Many hacia el registro diagnostico
 class paciente(models.Model):
     _name = 'hospital.paciente'
     _description = 'hospital.paciente'
@@ -22,7 +23,7 @@ class paciente(models.Model):
 
     diagnosticoPaciente = fields.One2many('hospital.diagnostico','relPaciente')
 
-
+#modelo diagnostico, con sus atributos y las relaciones Many2One hacia los registros paciente y medico respectivamente
 class diagnostico(models.Model):
     _name = 'hospital.diagnostico'
     _description = 'hospital.diagnostico'
