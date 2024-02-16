@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hospital.list_pacientes">
+            <field name="name">Vista pacientes</field>
+            <field name="model">hospital.paciente</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nombre" />
+                    <field name="apellido" />
+                    <field name="sintoma" />
+                    <field name="diagnosticoPaciente"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hospital.action_window_pacientes">
+            <field name="name">Pacientes</field>
+            <field name="res_model">hospital.paciente</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Hospital" id="hospital_menu_root" />
+
+        <menuitem name="Pacientes" id="hospital_pacientes_list" parent="hospital_menu_root"
+            action="hospital.action_window_pacientes" />
+    </data>
+</odoo>

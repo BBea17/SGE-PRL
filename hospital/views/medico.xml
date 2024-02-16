@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <!-- Definir la vista de lista de médicos -->
+        <record model="ir.ui.view" id="hospital.list_medico">
+            <field name="name">Vista médicos</field>
+            <field name="model">hospital.medico</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nombre" />
+                    <field name="apellido" />
+                    <field name="num_colegiado" />
+                    <field name="diagnosticoMedico"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hospital.action_window_medico">
+            <field name="name">Médicos</field>
+            <field name="res_model">hospital.medico</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Médicos" id="hospital_medicos_list" parent="hospital_menu_root"
+            action="hospital.action_window_medico" />
+    </data>
+</odoo>

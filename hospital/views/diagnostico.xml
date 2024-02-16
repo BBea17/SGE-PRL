@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hospital.list_diagnostico">
+            <field name="name">Vista diagnosticos</field>
+            <field name="model">hospital.diagnostico</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sintoma" />
+                    <field name="descripcion" />
+                    <field name="relPaciente" />
+                    <field name="relMedico" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hospital.action_window_diagnostico">
+            <field name="name">Diagnosticos</field>
+            <field name="res_model">hospital.diagnostico</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Diagnosticos" id="hospital_diagnosticos_list" parent="hospital_menu_root"
+            action="hospital.action_window_diagnostico" />
+    </data>
+</odoo>
