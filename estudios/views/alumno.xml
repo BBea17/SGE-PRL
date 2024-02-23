@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="estudios.list_alumno">
+            <field name="name">Vista alumnos</field>
+            <field name="model">estudios.alumno</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nombre" />
+                    <field name="apellido" />
+                    <field name="dni" />
+                    <field name="modulos" />
+                    <field name="profesor_modulo" />
+                    <field name="profesor_modulossss" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="estudios.action_window_alumno">
+            <field name="name">Alumnos</field>
+            <field name="res_model">estudios.alumno</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Menu personas" id="estudios_menuPersonas" parent="estudios_menu_root" />
+
+        <menuitem name="List Alumnos" id="estudios_alumnos_list" parent="estudios_menuPersonas"
+            action="estudios.action_window_alumno" />
+    </data>
+</odoo>
